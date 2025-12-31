@@ -5,17 +5,15 @@
 <title>Supresinha</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+/* ---------- RESET ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
 
-/* TELA INICIAL */
+/* ---------- TELA INICIAL (INTRO) ---------- */
+/* usar 100dvh para mobile (corrige problema de barra do navegador) */
 #intro {
   position: fixed;
   inset: 0;
+  height: 100dvh;
   background: linear-gradient(135deg, #000428, #004e92);
   display: flex;
   justify-content: center;
@@ -29,85 +27,77 @@
   pointer-events: none;
 }
 
+/* botão responsivo: largura proporcional, com limite; fonte e padding fluidos */
 #intro button {
-  padding: 26px 60px;
-  font-size: 28px;
+  width: min(80vw, 420px);            /* ocupa 80% da tela até 420px */
+  padding: clamp(12px, 3.5vw, 26px) 0;/* padding vertical responsivo */
+  font-size: clamp(16px, 5vw, 28px);  /* tamanho proporcional */
   border: none;
-  border-radius: 16px;
+  border-radius: 14px;
   background: gold;
   cursor: pointer;
-  box-shadow: 0 0 50px gold;
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
 }
 
 #intro button:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 80px white;
+  transform: scale(1.08);
+  box-shadow: 0 0 80px rgba(255,255,255,0.9);
 }
 
-/* TEXTO */
+/* ---------- CABEÇALHO (TÍTULO) ---------- */
+/* título maior em mobile usando clamp */
 h1 {
   position: absolute;
-  top: 30px;
+  top: env(safe-area-inset-top, 24px);
+  left: 0;
+  right: 0;
   width: 100%;
   text-align: center;
   color: white;
-  font-size: 58px;
-  text-shadow: 0 0 30px gold;
+  font-size: clamp(28px, 8.5vw, 64px); /* fica maior no mobile */
+  text-shadow: 0 0 30px rgba(255,215,0,0.95);
   opacity: 0;
-  transition: opacity 2s ease;
+  transition: opacity 1.5s ease;
   z-index: 5;
+  pointer-events: none;
 }
 
 h1.show {
   opacity: 1;
 }
 
-/* CANVAS */
+/* ---------- BODY / CANVAS ---------- */
 body {
   overflow: hidden;
   background: radial-gradient(circle at bottom, #020024, #000);
+  min-height: 100dvh; /* garante altura correta no mobile */
 }
 
 canvas {
   display: block;
+  width: 100%;
+  height: 100dvh; /* garante que o canvas ocupe toda a área visível */
 }
 
-/* =========================
-   AJUSTES PARA CELULAR
-========================= */
-@media (max-width: 768px) {
-
-  /* BOTÃO ABRIR SURPRESA */
+/* ---------- MEDIA QUERIES FINAIS (ajustes extras) ---------- */
+@media (max-width: 420px) {
+  /* botões muito pequenos em aparelhos pequenos */
   #intro button {
-    width: 80vw;              /* ocupa 80% da largura da tela */
-    max-width: 320px;
-    padding: 22px 0;
-    font-size: 6vw;           /* tamanho proporcional */
-    border-radius: 14px;
-  }
-
-  /* TEXTO FELIZ ANO NOVO */
-  h1 {
-    font-size: 9vw;           /* maior no celular */
-    top: 20px;
-    padding: 0 10px;
-  }
-}
-
-/* CELULARES MUITO PEQUENOS */
-@media (max-width: 480px) {
-
-  #intro button {
-    width: 90vw;
-    font-size: 7vw;
-    padding: 20px 0;
+    width: min(90vw, 380px);
+    padding: clamp(10px, 4.5vw, 20px) 0;
+    font-size: clamp(14px, 6vw, 24px);
+    border-radius: 12px;
   }
 
   h1 {
-    font-size: 10vw;
+    font-size: clamp(30px, 10vw, 56px);
+    top: env(safe-area-inset-top, 16px);
+    padding: 0 6px;
   }
 }
+
 
 </style>
 </head>
