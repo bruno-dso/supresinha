@@ -72,6 +72,43 @@ body {
 canvas {
   display: block;
 }
+
+/* =========================
+   AJUSTES PARA CELULAR
+========================= */
+@media (max-width: 768px) {
+
+  /* BOTÃO ABRIR SURPRESA */
+  #intro button {
+    width: 80vw;              /* ocupa 80% da largura da tela */
+    max-width: 320px;
+    padding: 22px 0;
+    font-size: 6vw;           /* tamanho proporcional */
+    border-radius: 14px;
+  }
+
+  /* TEXTO FELIZ ANO NOVO */
+  h1 {
+    font-size: 9vw;           /* maior no celular */
+    top: 20px;
+    padding: 0 10px;
+  }
+}
+
+/* CELULARES MUITO PEQUENOS */
+@media (max-width: 480px) {
+
+  #intro button {
+    width: 90vw;
+    font-size: 7vw;
+    padding: 20px 0;
+  }
+
+  h1 {
+    font-size: 10vw;
+  }
+}
+
 </style>
 </head>
 
@@ -263,6 +300,7 @@ canvas.addEventListener("click", e => {
   fireworks.push(new Firework(e.clientX, canvas.height, e.clientY));
 });
 </script>
+
 
 </body>
 </html>
