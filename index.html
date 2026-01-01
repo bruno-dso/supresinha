@@ -64,7 +64,7 @@ h1 {
   width: 100%;
   text-align: center;
   color: white;
-  font-size: clamp(32px, 9.5vw, 72px); /* fica maior no mobile */
+  font-size: clamp(26px, 8vw, 72px); /* fica maior no mobile */
   text-shadow: 0 0 30px rgba(255,215,0,0.95);
   opacity: 0;
   transition: opacity 1.5s ease;
@@ -100,7 +100,7 @@ canvas {
   }
 
   h1 {
-    font-size: clamp(30px, 10vw, 56px);
+    font-size: clamp(26px, 8vw, 44px);
     top: env(safe-area-inset-top, 16px);
     padding: 0 6px;
   }
@@ -289,7 +289,7 @@ setInterval(() => {
       random(canvas.height * 0.2, canvas.height * 0.5)
     )
   );
-}, 600);
+}, 300);
 
 /* CLIQUE */
 canvas.addEventListener("click", e => {
